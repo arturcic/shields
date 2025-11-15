@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: services/package-json-helpers</title>
+    <title>JSDoc: Source: vendor/http-deceiver/index.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,632 +17,306 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: services/package-json-helpers</h1>
-
-    
-
-
-
-
-<section>
-
-<header>
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description"><p>Common functions and utilities for tasks related to package.json</p></div>
-        
-
-        
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="services_package-json-helpers.js.html">services/package-json-helpers.js</a>, <a href="services_package-json-helpers.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<h4 class="name" id="~isDependencyMap"><span class="type-signature">(inner, constant) </span>isDependencyMap<span class="type-signature"> :Joi</span></h4>
-
-
-
-
-<div class="description">
-    <p>Joi schema for validating dependency map.</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Joi</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="services_package-json-helpers.js.html">services/package-json-helpers.js</a>, <a href="services_package-json-helpers.js.html#line15">line 15</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="~isPackageJsonWithDependencies"><span class="type-signature">(inner, constant) </span>isPackageJsonWithDependencies<span class="type-signature"> :Joi</span></h4>
-
-
-
-
-<div class="description">
-    <p>Joi schema for validating package json object.
-Checks if the object has all the dependency types and the dependency types are valid.</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Joi</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="services_package-json-helpers.js.html">services/package-json-helpers.js</a>, <a href="services_package-json-helpers.js.html#line29">line 29</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="~getDependencyVersion"><span class="type-signature">(inner) </span>getDependencyVersion<span class="signature">(attrs)</span><span class="type-signature"> &rarr; {string}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    <p>Determines the dependency version based on the dependency type.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>attrs</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Refer to individual attributes</p>
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>kind</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Wanted dependency type, defaults to prod</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>wantedDependency</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Name of the wanted dependency</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>dependencies</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Map of dependencies</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>devDependencies</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Map of dev dependencies</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>peerDependencies</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Map of peer dependencies</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>optionalDependencies</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Map of optional dependencies</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="services_package-json-helpers.js.html">services/package-json-helpers.js</a>, <a href="services_package-json-helpers.js.html#line50">line 50</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Throws:</h5>
-<ul>
-        <li>
-
-<dl>
-    <dt>
-        <div class="param-desc">
-        <ul>
-<li>Error message if unknown dependency type provided</li>
-</ul>
-        </div>
-    </dt>
-    <dd></dd>
-    <dt>
-        <dl>
-            <dt>
-                Type
-            </dt>
-            <dd>
-                
-<span class="param-type">string</span>
-
-
-            </dd>
-        </dl>
-    </dt>
-    <dd></dd>
-</dl>
-
-</li>
-    
-        <li>
-
-<dl>
-    <dt>
-        <div class="param-desc">
-        <ul>
-<li>Error if wanted dependency is not present</li>
-</ul>
-        </div>
-    </dt>
-    <dd></dd>
-    <dt>
-        <dl>
-            <dt>
-                Type
-            </dt>
-            <dd>
-                
-<span class="param-type">InvalidParameter</span>
-
-
-            </dd>
-        </dl>
-    </dt>
-    <dd></dd>
-</dl>
-
-</li>
-    </ul>
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>Semver range of the wanted dependency (eg. ~2.1.6 or &gt;=3.0.0 or &lt;4.0.0)</p>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">string</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-    
-
-    
-
-    
-</article>
-
-</section>
+    <h1 class="page-title">Source: vendor/http-deceiver/index.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* eslint-disable */
+/**
+ * The related issue:
+ * https://github.com/badges/shields/issues/11071
+ *
+ * The code below is a modified version of the original http-deceiver library.
+ * It has been adapted to work with Node.js versions that have deprecated
+ * the original implementation.
+ *
+ * The original library can be found at:
+ * https://github.com/spdy-http2/http-deceiver (MIT License)
+ *
+ * This version is specifically tailored to handle the deprecation of
+ * the `http_parser` module in Node.js v12 and later.
+ * https://github.com/beenotung/http-deceiver/blob/node-v12-deprecation-fix/lib/deceiver.js (MIT License)
+ *
+ * It maintains compatibility with older Node.js versions while providing
+ * a consistent interface for HTTP request and response parsing.
+ */
+var assert = require('assert')
+
+var Buffer = require('buffer').Buffer
+
+// Node.js version
+var mode = /^v0\.8\./.test(process.version)
+  ? 'rusty'
+  : /^v0\.(9|10)\./.test(process.version)
+    ? 'old'
+    : /^v0\.12\./.test(process.version)
+      ? 'normal'
+      : 'modern'
+
+var HTTPParser
+
+var methods
+var reverseMethods
+
+// var kOnHeaders
+var kOnHeadersComplete
+var kOnMessageComplete
+var kOnBody
+if (mode === 'normal' || mode === 'modern') {
+  HTTPParser = require('_http_common').HTTPParser
+  methods = require('_http_common').methods
+
+  // &lt;= v11
+  if (!HTTPParser) {
+    HTTPParser = process.binding('http_parser').HTTPParser
+    methods = process.binding('http_parser').methods
+  }
+
+  // &lt;= v5
+  if (!methods) {
+    methods = HTTPParser.methods
+  }
+
+  reverseMethods = {}
+
+  methods.forEach(function (method, index) {
+    reverseMethods[method] = index
+  })
+
+  // kOnHeaders = HTTPParser.kOnHeaders | 0
+  kOnHeadersComplete = HTTPParser.kOnHeadersComplete | 0
+  kOnMessageComplete = HTTPParser.kOnMessageComplete | 0
+  kOnBody = HTTPParser.kOnBody | 0
+} else {
+  // kOnHeaders = 'onHeaders'
+  kOnHeadersComplete = 'onHeadersComplete'
+  kOnMessageComplete = 'onMessageComplete'
+  kOnBody = 'onBody'
+}
+
+function Deceiver(socket, options) {
+  this.socket = socket
+  this.options = options || {}
+  this.isClient = this.options.isClient
+}
+module.exports = Deceiver
+
+Deceiver.create = function create(stream, options) {
+  return new Deceiver(stream, options)
+}
+
+Deceiver.prototype._toHeaderList = function _toHeaderList(object) {
+  var out = []
+  var keys = Object.keys(object)
+
+  for (var i = 0; i &lt; keys.length; i++) {
+    out.push(keys[i], object[keys[i]])
+  }
+
+  return out
+}
+
+Deceiver.prototype._isUpgrade = function _isUpgrade(request) {
+  return (
+    request.method === 'CONNECT' ||
+    request.headers.upgrade ||
+    (request.headers.connection &amp;&amp;
+      /(^|\W)upgrade(\W|$)/i.test(request.headers.connection))
+  )
+}
+
+// TODO(indutny): support CONNECT
+if (mode === 'modern') {
+  /*
+  function parserOnHeadersComplete(versionMajor, versionMinor, headers, method,
+                                   url, statusCode, statusMessage, upgrade,
+                                   shouldKeepAlive) {
+   */
+  Deceiver.prototype.emitRequest = function emitRequest(request) {
+    var parser = this.socket.parser
+    assert(parser, 'No parser present')
+
+    parser.execute = null
+
+    var self = this
+    var method = reverseMethods[request.method]
+    parser.execute = function execute() {
+      self._skipExecute(this)
+      this[kOnHeadersComplete](
+        1,
+        1,
+        self._toHeaderList(request.headers),
+        method,
+        request.path,
+        0,
+        '',
+        self._isUpgrade(request),
+        true,
+      )
+      return 0
+    }
+
+    this._emitEmpty()
+  }
+
+  Deceiver.prototype.emitResponse = function emitResponse(response) {
+    var parser = this.socket.parser
+    assert(parser, 'No parser present')
+
+    parser.execute = null
+
+    var self = this
+    parser.execute = function execute() {
+      self._skipExecute(this)
+      this[kOnHeadersComplete](
+        1,
+        1,
+        self._toHeaderList(response.headers),
+        response.path,
+        response.code,
+        response.status,
+        response.reason || '',
+        self._isUpgrade(response),
+        true,
+      )
+      return 0
+    }
+
+    this._emitEmpty()
+  }
+} else {
+  /*
+    `function parserOnHeadersComplete(info) {`
+
+    info = { .versionMajor, .versionMinor, .url, .headers, .method,
+             .statusCode, .statusMessage, .upgrade, .shouldKeepAlive }
+   */
+  Deceiver.prototype.emitRequest = function emitRequest(request) {
+    var parser = this.socket.parser
+    assert(parser, 'No parser present')
+
+    var method = request.method
+    if (reverseMethods) {
+      method = reverseMethods[method]
+    }
+
+    var info = {
+      versionMajor: 1,
+      versionMinor: 1,
+      url: request.path,
+      headers: this._toHeaderList(request.headers),
+      method: method,
+      statusCode: 0,
+      statusMessage: '',
+      upgrade: this._isUpgrade(request),
+      shouldKeepAlive: true,
+    }
+
+    var self = this
+    parser.execute = function execute() {
+      self._skipExecute(this)
+      this[kOnHeadersComplete](info)
+      return 0
+    }
+
+    this._emitEmpty()
+  }
+
+  Deceiver.prototype.emitResponse = function emitResponse(response) {
+    var parser = this.socket.parser
+    assert(parser, 'No parser present')
+
+    var info = {
+      versionMajor: 1,
+      versionMinor: 1,
+      url: response.path,
+      headers: this._toHeaderList(response.headers),
+      method: false,
+      statusCode: response.status,
+      statusMessage: response.reason || '',
+      upgrade: this._isUpgrade(response),
+      shouldKeepAlive: true,
+    }
+
+    var self = this
+    parser.execute = function execute() {
+      self._skipExecute(this)
+      this[kOnHeadersComplete](info)
+      return 0
+    }
+
+    this._emitEmpty()
+  }
+}
+
+Deceiver.prototype._skipExecute = function _skipExecute(parser) {
+  var self = this
+  var oldExecute = parser.constructor.prototype.execute
+  var oldFinish = parser.constructor.prototype.finish
+
+  parser.execute = null
+  parser.finish = null
+
+  parser.execute = function execute(buffer, start, len) {
+    // Parser reuse
+    if (this.socket !== self.socket) {
+      this.execute = oldExecute
+      this.finish = oldFinish
+      return this.execute(buffer, start, len)
+    }
+
+    if (start !== undefined) {
+      buffer = buffer.slice(start, start + len)
+    }
+    self.emitBody(buffer)
+    return len
+  }
+
+  parser.finish = function finish() {
+    // Parser reuse
+    if (this.socket !== self.socket) {
+      this.execute = oldExecute
+      this.finish = oldFinish
+      return this.finish()
+    }
+
+    this.execute = oldExecute
+    this.finish = oldFinish
+    self.emitMessageComplete()
+  }
+}
+
+Deceiver.prototype.emitBody = function emitBody(buffer) {
+  var parser = this.socket.parser
+  assert(parser, 'No parser present')
+
+  parser[kOnBody](buffer, 0, buffer.length)
+}
+
+Deceiver.prototype._emitEmpty = function _emitEmpty() {
+  // Emit data to force out handling of UPGRADE
+  var empty = new Buffer(0)
+  if (this.socket.ondata) {
+    this.socket.ondata(empty, 0, 0)
+  } else {
+    this.socket.emit('data', empty)
+  }
+}
+
+Deceiver.prototype.emitMessageComplete = function emitMessageComplete() {
+  var parser = this.socket.parser
+  assert(parser, 'No parser present')
+
+  parser[kOnMessageComplete]()
+}
+</code></pre>
+        </article>
+    </section>
 
 
 
