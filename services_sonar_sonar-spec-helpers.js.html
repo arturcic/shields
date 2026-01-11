@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: core/base-service/base-svg-scraping</title>
+    <title>JSDoc: Source: services/sonar/sonar-spec-helpers.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,101 +17,54 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: core/base-service/base-svg-scraping</h1>
+    <h1 class="page-title">Source: services/sonar/sonar-spec-helpers.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-</header>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import SonarBase from './sonar-base.js'
+import { openApiQueryParams } from './sonar-helpers.js'
 
-<article>
-    <div class="container-overview">
-    
-        
+const testAuthConfigOverride = {
+  public: {
+    services: {
+      [SonarBase.auth.serviceKey]: {
+        authorizedOrigins: [
+          openApiQueryParams.find(v => v.name === 'server').example,
+        ],
+      },
+    },
+  },
+}
 
-        
+/**
+ * Returns a legacy sonar api response with desired key and value
+ *
+ * @param {string} key Key for the response value
+ * @param {string|number} val Value to assign to response key
+ * @returns {object} Sonar api response
+ */
+function legacySonarResponse(key, val) {
+  return [
+    {
+      msr: [
+        {
+          key,
+          val,
+        },
+      ],
+    },
+  ]
+}
 
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core_base-service_base-svg-scraping.js.html">core/base-service/base-svg-scraping.js</a>, <a href="core_base-service_base-svg-scraping.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Classes</h3>
-
-        <dl>
-            <dt><a href="module-core_base-service_base-svg-scraping-BaseSvgScrapingService.html">BaseSvgScrapingService</a></dt>
-            <dd></dd>
-        </dl>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+export { testAuthConfigOverride, legacySonarResponse }
+</code></pre>
+        </article>
+    </section>
 
 
 
