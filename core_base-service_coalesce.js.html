@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: services/sonar/sonar-spec-helpers.js</title>
+    <title>JSDoc: Source: core/base-service/coalesce.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: services/sonar/sonar-spec-helpers.js</h1>
+    <h1 class="page-title">Source: core/base-service/coalesce.js</h1>
 
     
 
@@ -26,42 +26,19 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import SonarBase from './sonar-base.js'
-import { openApiQueryParams } from './sonar-helpers.js'
-
-const testAuthConfigOverride = {
-  public: {
-    services: {
-      [SonarBase.auth.serviceKey]: {
-        authorizedOrigins: [
-          openApiQueryParams.find(v => v.name === 'server').example,
-        ],
-      },
-    },
-  },
-}
-
-/**
- * Returns a legacy sonar api response with desired key and value
+            <pre class="prettyprint source linenums"><code>/**
+ * Returns the first non-null, non-undefined value from the provided candidates.
  *
- * @param {string} key Key for the response value
- * @param {string|number} val Value to assign to response key
- * @returns {object} Sonar api response
+ * Mirrors SQL's COALESCE: iterates the arguments in order and returns
+ * the first one that is neither `undefined` nor `null`.
+ * Returns `undefined` when all candidates are null or undefined.
+ *
+ * @param {...*} candidates - Values to evaluate in order.
+ * @returns {*} The first defined, non-null candidate, or `undefined`.
  */
-function legacySonarResponse(key, val) {
-  return [
-    {
-      msr: [
-        {
-          key,
-          val,
-        },
-      ],
-    },
-  ]
+export default function coalesce(...candidates) {
+  return candidates.find(c => c !== undefined &amp;&amp; c !== null)
 }
-
-export { testAuthConfigOverride, legacySonarResponse }
 </code></pre>
         </article>
     </section>

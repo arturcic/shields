@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: services/sonar/sonar-spec-helpers.js</title>
+    <title>JSDoc: Source: core/base-service/base-static.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: services/sonar/sonar-spec-helpers.js</h1>
+    <h1 class="page-title">Source: core/base-service/base-static.js</h1>
 
     
 
@@ -26,42 +26,76 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import SonarBase from './sonar-base.js'
-import { openApiQueryParams } from './sonar-helpers.js'
-
-const testAuthConfigOverride = {
-  public: {
-    services: {
-      [SonarBase.auth.serviceKey]: {
-        authorizedOrigins: [
-          openApiQueryParams.find(v => v.name === 'server').example,
-        ],
-      },
-    },
-  },
-}
+            <pre class="prettyprint source linenums"><code>import makeBadge from '../../badge-maker/lib/make-badge.js'
+import BaseService from './base.js'
+import {
+  serverHasBeenUpSinceResourceCached,
+  setCacheHeadersForStaticResource,
+} from './cache-headers.js'
+import { makeSend } from './legacy-result-sender.js'
+import { MetricHelper } from './metric-helper.js'
+import coalesceBadge from './coalesce-badge.js'
+import { prepareRoute, namedParamsForMatch } from './route.js'
 
 /**
- * Returns a legacy sonar api response with desired key and value
+ * Base class for services that generate static badges from route parameters
+ * and query parameters.
  *
- * @param {string} key Key for the response value
- * @param {string|number} val Value to assign to response key
- * @returns {object} Sonar api response
+ * Registers the service route, handles cache validation, invokes the service,
+ * builds the badge data, sets cache headers, renders the badge, and records
+ * request metrics.
  */
-function legacySonarResponse(key, val) {
-  return [
-    {
-      msr: [
-        {
-          key,
-          val,
-        },
-      ],
-    },
-  ]
-}
+export default class BaseStaticService extends BaseService {
+  static register({ camp, metricInstance }, serviceConfig) {
+    const { regex, captureNames } = prepareRoute(this.route)
 
-export { testAuthConfigOverride, legacySonarResponse }
+    const metricHelper = MetricHelper.create({
+      metricInstance,
+      ServiceClass: this,
+    })
+
+    camp.route(regex, async (queryParams, match, end, ask) => {
+      if (serverHasBeenUpSinceResourceCached(ask.req)) {
+        // Send Not Modified.
+        ask.res.statusCode = 304
+        ask.res.end()
+        return
+      }
+
+      const metricHandle = metricHelper.startRequest()
+
+      const namedParams = namedParamsForMatch(captureNames, match, this)
+      const serviceData = await this.invoke(
+        {},
+        serviceConfig,
+        namedParams,
+        queryParams,
+      )
+
+      const badgeData = coalesceBadge(
+        queryParams,
+        serviceData,
+        this.defaultBadgeData,
+        this,
+      )
+
+      // The final capture group is the extension.
+      const format = (match.slice(-1)[0] || '.svg').replace(/^\./, '')
+      badgeData.format = format
+
+      let maxAge = 24 * 3600 // 1 day
+      if (!queryParams.logo &amp;&amp; !badgeData.isError) {
+        maxAge = 5 * 24 * 3600 // 5 days
+      }
+      setCacheHeadersForStaticResource(ask.res, maxAge)
+
+      const svg = makeBadge(badgeData)
+      makeSend(format, ask.res, end)(svg)
+
+      metricHandle.noteResponseSent()
+    })
+  }
+}
 </code></pre>
         </article>
     </section>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: services/sonar/sonar-spec-helpers.js</title>
+    <title>JSDoc: Source: core/base-service/trace.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: services/sonar/sonar-spec-helpers.js</h1>
+    <h1 class="page-title">Source: core/base-service/trace.js</h1>
 
     
 
@@ -26,42 +26,65 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import SonarBase from './sonar-base.js'
-import { openApiQueryParams } from './sonar-helpers.js'
+            <pre class="prettyprint source linenums"><code>import chalk from 'chalk'
+import config from 'config'
+const objectConfig = config.util.toObject()
 
-const testAuthConfigOverride = {
-  public: {
-    services: {
-      [SonarBase.auth.serviceKey]: {
-        authorizedOrigins: [
-          openApiQueryParams.find(v => v.name === 'server').example,
-        ],
-      },
-    },
-  },
+// Config is loaded globally but it would be better to inject it. To do that,
+// there needs to be one instance of the service created at registration time,
+// which gets the config injected into it, instead of one instance per request.
+// That way most of the current static methods could become instance methods,
+// thereby gaining access to the injected config.
+const {
+  services: { trace: enableTraceLogging },
+} = objectConfig.public
+
+/**
+ * Formats a stage label with a coloured background for console output.
+ *
+ * @param {'inbound'|'fetch'|'validate'|'unhandledError'|'outbound'} stage - Pipeline stage name.
+ * @param {string} label - Text to display inside the coloured badge.
+ * @returns {string} ANSI-coloured label string.
+ */
+function _formatLabelForStage(stage, label) {
+  const colorFn = {
+    inbound: chalk.black.bgBlue,
+    fetch: chalk.black.bgYellow,
+    validate: chalk.black.bgGreen,
+    unhandledError: chalk.white.bgRed,
+    outbound: chalk.black.bgBlue,
+  }[stage]
+  return colorFn(` ${label} `)
 }
 
 /**
- * Returns a legacy sonar api response with desired key and value
+ * Logs a trace message to the console when trace logging is enabled in config.
  *
- * @param {string} key Key for the response value
- * @param {string|number} val Value to assign to response key
- * @returns {object} Sonar api response
+ * @param {'inbound'|'fetch'|'validate'|'unhandledError'|'outbound'} stage - Pipeline stage used to colour the label.
+ * @param {string} symbol - Short symbol or emoji prefixed to the log line.
+ * @param {string} label - Descriptive label shown alongside the symbol.
+ * @param {*} content - Data to print; logged with `console.dir` when `deep` is true.
+ * @param {object} [options={}] - Optional logging configuration.
+ * @param {boolean} [options.deep=false] - When `true`, uses `console.dir` for full-depth output.
+ * @returns {boolean} `true` if the message was logged, `false` when trace logging is disabled.
  */
-function legacySonarResponse(key, val) {
-  return [
-    {
-      msr: [
-        {
-          key,
-          val,
-        },
-      ],
-    },
-  ]
+function logTrace(stage, symbol, label, content, { deep = false } = {}) {
+  if (enableTraceLogging) {
+    if (deep) {
+      console.log(_formatLabelForStage(stage, label), symbol)
+      console.dir(content, { depth: null })
+    } else {
+      console.log(_formatLabelForStage(stage, label), symbol, '\n', content)
+    }
+    return true
+  } else {
+    return false
+  }
 }
 
-export { testAuthConfigOverride, legacySonarResponse }
+export default {
+  logTrace,
+}
 </code></pre>
         </article>
     </section>
