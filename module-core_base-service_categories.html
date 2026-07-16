@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: BaseGraphqlService</title>
+    <title>JSDoc: Module: core/base-service/categories</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: BaseGraphqlService</h1>
+    <h1 class="page-title">Module: core/base-service/categories</h1>
 
     
 
@@ -28,41 +28,16 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature">(abstract) </span></span>
-            <span class="ancestors"><a href="module-core_base-service_base-graphql.html">core/base-service/base-graphql</a>~</span>BaseGraphqlService<span class="signature">()</span><span class="type-signature"></span></h2>
-        
-            <div class="class-description"><p>Services which query a GraphQL endpoint should extend BaseGraphqlService</p></div>
-        
-    
 </header>
 
 <article>
     <div class="container-overview">
     
         
+            <div class="description"><p>Helpers for validating service category identifiers.</p></div>
+        
 
-    
-    <h2>Constructor</h2>
-    
-
-    
-    <h4 class="name" id="BaseGraphqlService"><span class="type-signature">(abstract) </span>new BaseGraphqlService<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
 
 
 <dl class="details">
@@ -94,7 +69,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core_base-service_base-graphql.js.html">core/base-service/base-graphql.js</a>, <a href="core_base-service_base-graphql.js.html#line19">line 19</a>
+        <a href="core_base-service_categories.js.html">core/base-service/categories.js</a>, <a href="core_base-service_categories.js.html#line1">line 1</a>
     </li></ul></dd>
     
 
@@ -106,24 +81,7 @@
 </dl>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
     
     </div>
 
@@ -140,83 +98,31 @@
     
 
     
-
-    
-        <h3 class="subsection-title">Methods</h3>
+        <h3 class="subsection-title">Members</h3>
 
         
             
+<h4 class="name" id="~isValidCategory"><span class="type-signature">(inner, constant) </span>isValidCategory<span class="type-signature"> :Joi</span></h4>
 
-    
-
-    
-    <h4 class="name" id="_parseJson"><span class="type-signature"></span>_parseJson<span class="signature">(buffer)</span><span class="type-signature"> &rarr; {object}</span></h4>
-    
-
-    
 
 
 
 <div class="description">
-    <p>Parse data from JSON endpoint</p>
+    <p>Joi validator for service categories registered by Shields, including the
+special <code>debug</code>, <code>dynamic</code>, and <code>static</code> categories.</p>
 </div>
 
 
 
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
+    <h5>Type:</h5>
+    <ul>
+        <li>
             
-                <td class="name"><code>buffer</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
+<span class="param-type">Joi</span>
 
 
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>JSON response from upstream API</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
+        </li>
+    </ul>
 
 
 
@@ -251,7 +157,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core_base-service_base-graphql.js.html">core/base-service/base-graphql.js</a>, <a href="core_base-service_base-graphql.js.html#line26">line 26</a>
+        <a href="core_base-service_categories.js.html">core/base-service/categories.js</a>, <a href="core_base-service_categories.js.html#line18">line 18</a>
     </li></ul></dd>
     
 
@@ -267,41 +173,11 @@
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
         
-<div class="param-desc">
-    <p>Parsed response</p>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">object</span>
-
-
-    </dd>
-</dl>
-
     
 
-
-
-
+    
+        <h3 class="subsection-title">Methods</h3>
 
         
             
@@ -309,7 +185,7 @@
     
 
     
-    <h4 class="name" id="_requestGraphql"><span class="type-signature">(async) </span>_requestGraphql<span class="signature">(attrs)</span><span class="type-signature"> &rarr; {object}</span></h4>
+    <h4 class="name" id="~assertValidCategory"><span class="type-signature">(inner) </span>assertValidCategory<span class="signature">(category, message<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {void}</span></h4>
     
 
     
@@ -317,8 +193,7 @@
 
 
 <div class="description">
-    <p>Request data from an upstream GraphQL API,
-parse it and validate against a schema</p>
+    <p>Assert that a value is a valid Shields service category.</p>
 </div>
 
 
@@ -331,48 +206,6 @@ parse it and validate against a schema</p>
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>attrs</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Refer to individual attrs</p>
-                <h6>Properties</h6>
-                
 
 <table class="params">
     <thead>
@@ -388,8 +221,6 @@ parse it and validate against a schema</p>
         
 
         
-        <th>Default</th>
-        
 
         <th class="last">Description</th>
     </tr>
@@ -400,42 +231,7 @@ parse it and validate against a schema</p>
 
         <tr>
             
-                <td class="name"><code>schema</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Joi</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last"><p>Joi schema to validate the response against</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>url</code></td>
+                <td class="name"><code>category</code></td>
             
 
             <td class="type">
@@ -458,97 +254,21 @@ parse it and validate against a schema</p>
             
 
             
-                <td class="default">
-                
-                </td>
-            
 
-            <td class="description last"><p>URL to request</p></td>
+            <td class="description last"><p>Service category identifier to validate.</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>query</code></td>
+                <td class="name"><code>message</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last"><p>Parsed GraphQL object
-representing the query clause of GraphQL POST body
-e.g. gql<code>{ query { ... } }</code></p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>variables</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last"><p>Variables clause of GraphQL POST body</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
+<span class="param-type">string</span>
 
 
             
@@ -567,231 +287,8 @@ e.g. gql<code>{ query { ... } }</code></p></td>
             
 
             
-                <td class="default">
-                
-                    {}
-                
-                </td>
-            
 
-            <td class="description last"><p>Options to pass to got. See
-<a href="https://github.com/sindresorhus/got/blob/main/documentation/2-options.md">documentation</a></p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>httpErrorMessages</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    {}
-                
-                </td>
-            
-
-            <td class="description last"><p>Key-value map of HTTP status codes
-and custom error messages e.g: <code>{ 404: 'package not found' }</code>.
-This can be used to extend or override the
-<a href="https://github.com/badges/shields/blob/master/core/base-service/check-error-response.js#L5">default</a></p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>systemErrors</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    {}
-                
-                </td>
-            
-
-            <td class="description last"><p>Key-value map of got network exception codes
-and an object of params to pass when we construct an Inaccessible exception object
-e.g: <code>{ ECONNRESET: { prettyMessage: 'connection reset' } }</code>.
-See <a href="https://github.com/sindresorhus/got/blob/main/documentation/7-retry.md#errorcodes">got error codes</a>
-for allowed keys
-and <a href="module-core_base-service_errors.html#~RuntimeErrorProps">module:core/base-service/errors~RuntimeErrorProps</a> for allowed values</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>logErrors</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;number></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    [429]
-                
-                </td>
-            
-
-            <td class="description last"><p>An array of http error codes
-that will be logged (to sentry, if configured).</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>transformJson</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    data => data
-                
-                </td>
-            
-
-            <td class="description last"><p>Function which takes the raw json and transforms it before
-further processing. In case of multiple query in a single graphql call and few of them
-throw error, partial data might be used ignoring the error.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>transformErrors</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    defaultTransformErrors
-                
-                </td>
-            
-
-            <td class="description last"><p>Function which takes an errors object from a GraphQL
-response and returns an instance of ShieldsRuntimeError.
-The default is to return the first entry of the <code>errors</code> array as
-an InvalidResponse.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
+            <td class="description last"><p>Optional prefix for the validation error.</p></td>
         </tr>
 
     
@@ -832,19 +329,12 @@ an InvalidResponse.</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core_base-service_base-graphql.js.html">core/base-service/base-graphql.js</a>, <a href="core_base-service_base-graphql.js.html#line68">line 68</a>
+        <a href="core_base-service_categories.js.html">core/base-service/categories.js</a>, <a href="core_base-service_categories.js.html#line30">line 30</a>
     </li></ul></dd>
     
 
     
 
-    
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li><a href="https://github.com/sindresorhus/got/blob/main/documentation/2-options.md">https://github.com/sindresorhus/got/blob/main/documentation/2-options.md</a></li>
-        </ul>
-    </dd>
     
 
     
@@ -862,15 +352,40 @@ an InvalidResponse.</p></td>
 
 
 
+<h5>Throws:</h5>
+
+        
+
+<dl>
+    <dt>
+        <div class="param-desc">
+        <p>When the category is not recognized.</p>
+        </div>
+    </dt>
+    <dd></dd>
+    <dt>
+        <dl>
+            <dt>
+                Type
+            </dt>
+            <dd>
+                
+<span class="param-type">Error</span>
+
+
+            </dd>
+        </dl>
+    </dt>
+    <dd></dd>
+</dl>
+
+
+    
 
 
 <h5>Returns:</h5>
 
         
-<div class="param-desc">
-    <p>Parsed response</p>
-</div>
-
 
 
 <dl>
@@ -879,7 +394,7 @@ an InvalidResponse.</p></td>
     </dt>
     <dd>
         
-<span class="param-type">object</span>
+<span class="param-type">void</span>
 
 
     </dd>
